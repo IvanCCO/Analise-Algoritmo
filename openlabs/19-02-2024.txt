@@ -1,0 +1,74 @@
+Problema A: Por que precisamos ser capazes de medir a eficiência de um
+algoritmo?
+
+Resposta:
+Precisamos conseguir medir a eficiência de um algoritmo, antes de depois 
+de sua execução para conseguirmos comparar algoritmos, e assim ser possível
+escolher um algoritmo x ou y com alguma base de comparação, existem diversas
+maneiras de conseguir medir a eficiência, podendo ser uma análise assintótica
+onde não levamos em consideração variáveis fora do contexto do algortimo, como
+máquina, processador e memória, ou até mesmo medindo a execução de determinado
+algoritmo e calculando seu tempo para ser executado e a quantidade de memória 
+que precisou.
+
+
+
+
+Problema B: Dois algoritmos são executados na mesma máquina. O primeiro leva
+10 segundos para realizar sua tarefa, enquanto o segundo leva 20 segundos. Em
+geral, qual algoritmo é mais eficiente?
+
+Resposta:
+Para poder responder essa pergunta primeiro precisamos levar em consideração
+que a entrada e o resultado esperado dos dois algoritmos é o mesmo, com isso em mente
+podemos dizer que o primeiro algoritmo que demora 10 segundos é mais eficiente, pois
+ele precisa de menos tempo para conseguir realizar a operação.
+
+
+
+
+Problema C: Defina o "custo" de um algoritmo.
+
+Resposta:
+O custo de um algoritmo é a quantidade de recursos que o algoritmo consome em sua 
+execução, esses recursos podem ser diversos, tempo de processamento(tempo), uso 
+de memória(memória), complexidade assintótica medindo o crescimento do algoritmo 
+dado um conjunto de dados.
+
+
+
+
+Problema D: Quais são as três desvantagens de usar o "tempo de execução real" de
+um algoritmo para medir sua eficiência? O que seria o tempo de execução real,
+antes de responder sobre as desvantagens.
+
+Resposta:
+Medir um algoritmo com o Tempo de execução real é literalmente executar o algoritmo
+e calcular o tempo que ele levou para ser executado, porém essa abordagem é um tanto
+quanto problemática, pois o tempo de execução depende de diversos fatores que não são 
+apenas o algoritmo em SI, essas fatores tanto físicos quanto digitais, como por exemplo 
+poder de processamento, memória virtual disponível, qualidade dos componentes de hardware,
+linguagem de programação e etc.
+além disso, o desempenho do algoritmo pode ser influencidado por atividades concorrentes,
+como processos em segundo plano consumindo recursos.
+Outro problema é que a existe uma dependência das entradas desse algoritmo, pois ele terá 
+diferentes tempos de execução com diferentes conjuntos de dados, levando a resultados imprecisos,
+em uma única execução.
+
+
+
+
+Problema E: De que outra forma poderíamos medir a eficiência de um algoritmo de
+modo que essas preocupações sobre o tempo de execução real sejam irrelevantes?
+
+Resposta:
+Podemos fazer uma análise assintótica, que é medir um algoritmo independente
+dos recursos disponíveis, como os componentes de hardware citados na última questão,
+removendo essas variáveis podemos apenas levar em consideração a entrada e a quantidade
+de operações que serão feitas, dada essa determinada entrada, ou seja independente da linguagem
+de programação, ou seja, dado N entrada o algoritmo fará N² operações por exemplo. 
+Existem algumas notações que nos ajudam a fazer essa análise, as mais famosas são: 
+
+Big O -> Onde fazemos a análise levando em conta que o algortimo será executado no pior cenário
+Big Omega -> Onde fazemos a análise levando em conta que o algortimo será executado no melhor cenário
+ 
