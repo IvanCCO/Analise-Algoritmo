@@ -1,9 +1,8 @@
-from memory_profiler import memory_usage
 import time
 import random
 import sys
-
-sys.setrecursionlimit(99999)
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def bubble_sort(arr):
@@ -42,33 +41,85 @@ def quick_sort(arr, low, high):
         quick_sort(arr, pi + 1, high)
 
 
-if __name__ == "__main__":
-    original_arr = list(range(100))
+def unsorted_arr(num: int):
+    original_arr = list(range(num))
     arr = random.sample(original_arr, len(original_arr))
+    return arr
 
+
+def bubble_sort_execution(i: int):
+    arr = unsorted_arr(i * 100)
     inicio = time.time()
-    memoria, (resultado, ciclos) = memory_usage(
-        (bubble_sort, (arr.copy(),), {}), max_usage=True, retval=True
-    )
+    bubble_sort(arr)
     fim = time.time()
+    tempo_total = round(fim - inicio, 2)
+    print(f"tempo para executar BUBBLE SORT com {len(arr)} foi de {tempo_total}")
+    del fim
+    del inicio
+    return tempo_total
 
-    tempo_total = fim - inicio
 
-    print(f"Uso máximo de memória: {memoria}")
-    print(f"Ciclos: {ciclos}")
-    print(f"Tempo: {tempo_total}")
+def quick_sort_execution(i: int):
+    arr = unsorted_arr(i * 100)
+    inicio = time.time()
+    quick_sort(arr, 0, len(arr) - 1)
+    fim = time.time()
+    tempo_total = round(fim - inicio, 2)
+    print(f"tempo para executar QUICK SORT com {len(arr)} foi de {tempo_total}")
+    del fim
+    del inicio
+    return tempo_total
 
-    r = random.sample(original_arr, len(original_arr))
 
-    i = time.time()
-    memoria2, resultado2 = memory_usage(
-        (quick_sort, (r, 0, len(arr) - 1), {}),
-        max_usage=True,
-        retval=True,
-    )
-    f = time.time()
+def quick_sort_execution_worst(i: int):
+    arr = list(range(i * 100))
+    inicio = time.time()
+    quick_sort(arr, 0, len(arr) - 1)
+    fim = time.time()
+    tempo_total = round(fim - inicio, 2)
+    print(f"tempo para executar QUICK SORT WORST com {len(arr)} foi de {tempo_total}")
+    del fim
+    del inicio
+    return tempo_total
 
-    tt = f - i
 
-    print(f"Uso máximo de memória: {memoria2}")
-    print(f"Tempo: {tt}")
+def plot_grafico_de_linha(y1, y2, y3):
+    plt.plot(
+        list(range(len(y1))), y1, label="Bubble Sort O(n²)"
+    )  # Linha para o primeiro conjunto de dados
+    plt.plot(
+        list(range(len(y2))), y2, label="Quick Sort O(n log n)"
+    )  # Linha para o segundo conjunto de dados
+    plt.plot(
+        list(range(len(y3))), y3, label="Quick Sort worst O(n²)"
+    )  # Linha para o segundo conjunto de dados
+
+    plt.xlabel("Tamanho do input (n)")
+    plt.ylabel("Tempo gasto")
+    plt.title("Gráfico de Linha Comparativo")
+    plt.legend()
+    plt.show()
+
+
+def sepator():
+    print("=" * 100)
+
+
+if __name__ == "__main__":
+    tempo_y_bs = []
+    tempo_y_qs = []
+    tempo_y_qs_w = []
+    sys.setrecursionlimit(10**9)
+    random.seed(10)
+
+    try:
+        for i in range(1, 1_000_00):
+            tempo_y_bs.append(bubble_sort_execution(i))
+            tempo_y_qs.append(quick_sort_execution(i))
+            tempo_y_qs_w.append(quick_sort_execution_worst(i))
+            sepator()
+    except Exception as e:
+        print(e)
+    finally:
+        while True:
+            plot_grafico_de_linha(tempo_y_bs, tempo_y_qs, tempo_y_qs_w)
