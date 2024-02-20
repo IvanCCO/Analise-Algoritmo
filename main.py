@@ -105,7 +105,7 @@ def quick_sort_execution(i: int):
 
 
 def quick_sort_execution_worst(i: int):
-    arr = list(range(i * 100))
+    arr = list(range(i * 1000))
     inicio = time.time()
     quick_sort(arr, 0, len(arr) - 1)
     fim = time.time()
@@ -145,7 +145,7 @@ def plot_grafico_de_linha_test():
     plt.show()
 
 
-def plot_grafico_de_linha(y1, y2, y3):
+def plot_grafico_de_linha_1(y1, y2, y3):
     plt.plot(
         list(range(len(y1))), y1, label="Bubble Sort O(n²)"
     )  # Linha para o primeiro conjunto de dados
@@ -163,13 +163,24 @@ def plot_grafico_de_linha(y1, y2, y3):
     plt.show()
 
 
-def plot_grafico_de_linha(y1, y2):
+def plot_grafico_de_linha_2(y1, y2):
     plt.plot(
         list(range(len(y1))), y1, label="Bubble Sort O(n²)"
     )  # Linha para o primeiro conjunto de dados
     plt.plot(
         list(range(len(y2))), y2, label="Quick Sort O(n log n)"
     )  # Linha para o segundo conjunto de dados
+    plt.xlabel("Tamanho do input (n)")
+    plt.ylabel("Tempo gasto")
+    plt.title("Gráfico de Linha Comparativo")
+    plt.legend()
+    plt.show()
+
+
+def plot_grafico_de_linha(y1):
+    plt.plot(
+        list(range(len(y1))), y1, label="Bubble Sort O(n²)"
+    )  # Linha para o primeiro conjunto de dados
     plt.xlabel("Tamanho do input (n)")
     plt.ylabel("Tempo gasto")
     plt.title("Gráfico de Linha Comparativo")
@@ -265,12 +276,9 @@ def sepator():
 
 
 if __name__ == "__main__":
-    # print(sys.getsizeof(100_000))
-    # plot_grafico_columns_test()
-    # plot_grafico_de_linha_test()
     tempo_y_bs = []
     tempo_y_qs = []
-    # tempo_y_qs_w = []
+    tempo_y_qs_w = []
     sys.setrecursionlimit(10**9)
     random.seed(10)
     #
@@ -278,10 +286,10 @@ if __name__ == "__main__":
         for i in range(1, 1_000_000):
             tempo_y_bs.append(bubble_sort_execution(i))
             tempo_y_qs.append(quick_sort_execution(i))
-            # tempo_y_qs_w.append(quick_sort_execution_worst(i))
+            tempo_y_qs_w.append(quick_sort_execution_worst(i))
             sepator()
     except Exception as e:
         print(e)
     finally:
         while True:
-            plot_grafico_de_linha(tempo_y_bs, tempo_y_qs)
+            plot_grafico_de_linha_1(tempo_y_bs, tempo_y_qs, tempo_y_qs_w)
