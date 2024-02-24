@@ -1,0 +1,14 @@
+
+Fazer com que tenha requests de número n
+ai se passar de n > 50k faz passar
+
+Posso pegar um intervalo de horas: 
+
+Por exemplo:
+
+01 : 10 -> 1k ** 10(quadrado) requests
+10 : 20 -> 10k ** 10(cubo) requests
+20 : 30 -> 10k ** 10(quarto) requests
+30 : 40 -> 10k ** 10(cubo) requests
+40 : 50 -> 10k ** 10(quadrado) requests
+50 : 60 -> 10k ** 10 requests
