@@ -47,6 +47,15 @@ def separator():
     print("=" * 100)
 
 
+def get_acelerator(x, y) -> int:
+    p = random.randint(x, x + 10)
+    g = multilply_by_minute()
+    if g % 5 == 0:
+        return p**y
+    p = p * g
+    return p
+
+
 def plot_grafico_de_linha_2(y1, x1):
     while True:
         plt.plot(
@@ -64,22 +73,17 @@ def plot_grafico_de_linha_2(y1, x1):
 if __name__ == "__main__":
     tempo_y = []
     x = []
+    acelerador = 1
     counter = 0
-
-    m = 1
-    n = 1
+    elevated_by = 2
 
     try:
         while True:
-            num = max(m, n)
-            m = random.randint(num, (num + random.randint(1, num)))
-            n = random.randint(num, (num + random.randint(1, num)))
-            if multilply_by_minute() > 30:
-                acelerador = m * n * random.randint(1, 100)
-            else:
-                acelerador = m * n
-
-            print(f"Valores de multiplicação serão {m} * {n}")
+            if counter > 5 * 10:
+                counter = 0
+                elevated_by += 1
+            acelerador = get_acelerator(acelerador, elevated_by)
+            print(f"Valores de multiplicação serão {acelerador}")
             inicio = time.time()
             sum_of_n_init(acelerador)
             fim = time.time()
