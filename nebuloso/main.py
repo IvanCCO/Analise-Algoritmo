@@ -1,29 +1,23 @@
-# Desafio Nebuloso
-#
-# Código fornecido
-#
-
-
 def left(i: int) -> int:
     return 2 * i + 1
 
 
-def rigth(i: int) -> int:
+def right(i: int) -> int:
     return 2 * i + 2
 
 
-def heapify(*a: int, n: int, i: int):
+def heapify(a: list, n: int, i: int):
     e = left(i)
-    d = rigth(i)
+    d = right(i)
     mx = 0
     aux = 0
 
-    if e < n and a[e] > a[i]:
+    if e < n - 1 and a[e] > a[i]:
         mx = e
     else:
         mx = i
 
-    if d < n and a[d] > a[mx]:
+    if d < n - 1 and a[d] > a[mx]:
         mx = d
 
     if mx != i:
@@ -33,10 +27,10 @@ def heapify(*a: int, n: int, i: int):
         heapify(a, n, mx)
 
 
-def buildHeap(*a: int, n: int):
-    i = (n - 1) / 2
+def buildHeap(a: list, n: int):
+    i = n // 2 - 1
 
-    for j in range(i, 0, -1):
+    for j in range(i, -1, -1):
         heapify(a, n, j)
 
 
