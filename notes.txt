@@ -1,0 +1,16 @@
+Nome: Ivan Freire de Medeiros Miranda
+Grupo: 5
+
+Atividade Análise de Algortimo:
+
+A) 
+Preencha os valores de 1 a 10:
+
+1 = 1; 2 = 3; 3 = 6; 4 = 10; 5 = 15
+6 = 21; 7 = 28; 8 = 36; 9 = 45; 10 = 55
+
+B) 
+Analíse o comportamento do 
+
+C) 
+
